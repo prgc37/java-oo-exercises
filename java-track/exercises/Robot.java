@@ -9,14 +9,14 @@ public class Robot {
 	int toX;
 	int toY;
 	
-	public Robot(String name, int xCo, int yCo, int speed, String direction, int toX, int toY) {
+	public Robot(String name, int x, int y, int speed, String direction) {
 		this.name = name;
-		this.xCo = xCo;
-		this.yCo = yCo;
+		this.xCo = x;
+		this.yCo = y;
 		this.speed = speed;
 		this.direction = direction;
-		this.toX = toX;
-		this.toY = toY;
+		this.toX = 0;
+		this.toY = 0;
 	}
 	
 	public String getName(){
@@ -162,7 +162,7 @@ public class Robot {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Robot firstRobot = new Robot("Kit9", 5, 10, 2, "N", 0, 0);
+		Robot firstRobot = new Robot("Kit9", 5, 10, 2, "N");
 //		System.out.println(firstRobot.name);
 //		System.out.println(firstRobot.direction);
 //		firstRobot.rotate("left");

@@ -9,34 +9,38 @@ public class Rectangle {
 		this.length = length;
 		this.width = width; 
 	}
+	public int getLength(){
+		return this.length;
+	}
+	
+	public int getWidth(){
+		return this.width;
+	}
 	
 	public int getPerimeter() {
 		int perimeter = (this.length + this.width) * 2;
 		return perimeter; 
 	}
 	
-	public int getArea(int length, int width) {
+	public int getArea() {
 		int area = this.length * this.width;
 		return area;	
 	}
 	
 	public boolean isSmaller(Rectangle x) {
-		if (this.getArea(this.length, this.width) < (x.length * x.width)) 
+		if (this.getArea() < (x.length * x.width)) 
 			return true;
 		return false;
 	}
 	
 	public boolean isSquare() {
-		if (this.length == this.width){
+		if (this.length == this.width)
 			return true;
-		}
-		else {
-			return false; 
-		}
+		return false;
 	}
 	
 	public String toString(){
-		return "With a width of: " + this.width + ", and a length of: " + this. length + ", our Rectangle has an area of: " + getArea(this.length, this.width);
+		return "Width: " + this.width + ", Length: " + this. length;
 	}
 
 	public static void main(String[] args) {

@@ -1,8 +1,10 @@
 package Studio1;
 
+import static org.junit.Assert.assertTrue;
+
 public class Fraction {
-	private int numerator;
-	private int denominator;
+	int numerator;
+	int denominator;
 	
 	public Fraction (int numerator, int denominator){
 		this.numerator = numerator;
@@ -17,36 +19,41 @@ public class Fraction {
 		return this.denominator;
 	}
 	
-//	public String addFrac(Fraction x){
-//		this.numerator = this.numerator + numerator;
-//		this.denominator = this.denominator + denominator;
-//		return this.numerator + "/" + this.denominator;
-//	}
-//	
-	public String multiFrac(Fraction x){
-		this.numerator = this.numerator * numerator;
-		this.denominator = this.denominator + denominator;
-		return this.numerator + "/" + this.denominator;
+	public Fraction addFrac(Fraction x){
+		int mult1 = this.denominator;
+//		int mult2 = this.numerator;
+		this.denominator = this.denominator * x.denominator;
+		this.numerator = (x.denominator * this.numerator) + (mult1 * x.numerator);
+		return new Fraction(this.numerator, this.denominator);
 	}
 	
-	public String reciprocal(){
-		return "The reciprocal is: " + this.denominator + "/" + this.numerator;
+	public Fraction multiFrac(Fraction x){
+		this.numerator = this.numerator * numerator;
+		this.denominator = this.denominator * denominator;
+		return new Fraction(this.numerator,this.denominator);
+	}
+	
+	public Fraction reciprocal(){
+		int nph = this.numerator;
+		int dph = this.denominator;
+		this.denominator = nph;
+		this.numerator = dph;
+		return new Fraction(this.numerator, this.denominator);
 		
 	}
-	public int gcd(int a, int b) {
+	public int lcm(int a, int b) {
 		if (b == 0)
 			return a;
-		return gcd(b, a % b);
+		return lcm(b, a % b);
 	}
 	
 	public Fraction simple(){
-		//ASK CHESter
-		int factor = gcd(this.numerator, this.denominator);
+		int factor = lcm(this.numerator, this.denominator);
 		return new Fraction(this.numerator/factor, this.denominator/factor);
 	}
 	
 	public String toString(){
-		return "With a Numerator: " + this.numerator + " and the Denominator: " + this.denominator + ", giving us a fraction of: " + this.numerator + "/" + this.denominator;
+		return this.numerator + "/" + this.denominator;
 	}
 	
 	
@@ -55,8 +62,9 @@ public class Fraction {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Fraction lame = new Fraction(7, 16);
-		System.out.println(lame);
+		Fraction lame = new Fraction(1, 2);
+		Fraction two = new Fraction(2, 8);
+		System.out.println(two.simple());
 	}
 
 }

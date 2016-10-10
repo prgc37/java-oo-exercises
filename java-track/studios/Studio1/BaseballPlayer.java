@@ -1,13 +1,8 @@
 package Studio1;
 
 public class BaseballPlayer {
-	private String name;
-	private int number;
-	private String bat_hand;
-	private int hits;
-	private int RBIs;
-	private int HRs;
-	private int GP;
+	private String name, bat_hand;
+	private int number, hits, RBIs, HRs, GP;
 	
 	public BaseballPlayer(String name, int number, String bat_hand){
 		this.name = name;
@@ -51,7 +46,7 @@ public class BaseballPlayer {
 		this.GP += 1;
 	}
 	
-	public void hitRun() {
+	public void hitHR() {
 		this.HRs += 1;
 	}
 	
