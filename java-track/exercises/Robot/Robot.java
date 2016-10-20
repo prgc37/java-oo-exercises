@@ -1,6 +1,4 @@
-
-import Robot.RobotBehavior;
-import Robot.WithoutLoad;
+package Robot;
 
 public class Robot {
 	
@@ -14,15 +12,12 @@ public class Robot {
 	int toY;
 	
 	public Robot(String name, int x, int y, int speed, String direction) {
-		if (speed < 0){
-			throw new IllegalArgumentException();
-		}
 		this.name = name;
 		this.xCo = x;
 		this.yCo = y;
 		this.speed = speed;
 		this.direction = direction;
-		this.behavior = new WithoutLoad(4);
+		this.behavior = behavior;
 		this.toX = 0;
 		this.toY = 0;
 	}
@@ -107,22 +102,22 @@ public class Robot {
 	
 	public String getDistanceTo(int xCo, int yCo){
 		//Determine Distance (from other robot or object)
-		if (this.xCo >= 0 && xCo >= 0){
-			if (this.xCo >= xCo){
+		if (this.xCo > 0 && xCo > 0){
+			if (this.xCo > xCo){
 				this.toX = this.xCo - xCo;
 			}
 			else {
 				this.toX = xCo - this.xCo;
 			}
 		}
-		else if (this.xCo >= 0 && xCo <= 0){
+		else if (this.xCo > 0 && xCo < 0){
 			this.toX = this.xCo + Math.abs(xCo);
 		}
-		else if (this.xCo <= 0 && xCo >= 0){
+		else if (this.xCo < 0 && xCo > 0){
 			this.toX = Math.abs(this.xCo) + xCo;
 		}
-		else if (this.xCo <= 0 && xCo <= 0){
-			if (this.xCo >= xCo){
+		else if (this.xCo < 0 && xCo < 0){
+			if (this.xCo > xCo){
 				this.toX = Math.abs(xCo) - Math.abs(this.xCo);
 			}
 			else {
@@ -134,22 +129,22 @@ public class Robot {
 		}
 		
 		
-		if (this.yCo >= 0 && yCo >= 0){
-			if (this.yCo >= yCo){
+		if (this.yCo > 0 && yCo > 0){
+			if (this.yCo > yCo){
 				this.toY = this.yCo - yCo;
 			}
 			else {
 				this.toY = yCo - this.yCo;
 			}
 		}
-		else if (this.yCo >= 0 && yCo <= 0){
+		else if (this.yCo > 0 && yCo < 0){
 			this.toY = this.yCo + Math.abs(yCo);
 		}
-		else if (this.yCo <= 0 && yCo >= 0){
+		else if (this.yCo < 0 && yCo > 0){
 			this.toY = Math.abs(this.yCo) + yCo;
 		}
-		else if (this.yCo <= 0 && yCo <= 0){
-			if (this.yCo >= yCo){
+		else if (this.yCo < 0 && yCo < 0){
+			if (this.yCo > yCo){
 				this.toY = Math.abs(yCo) - Math.abs(this.yCo);
 			}
 			else {
@@ -159,7 +154,7 @@ public class Robot {
 		else {
 			System.out.println("Dude...that just screwed up my head");
 		}
-		return "The X coordinate distance = " + toX + " and the Y coordinate distance = " + toY;
+		return "The X coordinate distance = " + toX + "and the Y coordinate distance = " + toY;
 		
 	}
 	
@@ -173,15 +168,8 @@ public class Robot {
 	
 	
 	public static void main(String[] args) {
-		try{
-			Robot zeroRobot = new Robot("Zero", 1, 1, 2, "W");
-		} 
-		catch(IllegalArgumentException e){
-			System.out.println("Cannot create Robot");
-			e.printStackTrace();
-		}
-		
-		Robot firstRobot = new Robot("Kit9", 5, 10, 2, "N");
+		// TODO Auto-generated method stub
+		Robot firstRobot = new Robot("Kit9", 5, 10, 2, "N", );
 //		System.out.println(firstRobot.name);
 //		System.out.println(firstRobot.direction);
 //		firstRobot.rotate("left");
@@ -191,7 +179,6 @@ public class Robot {
 		System.out.println(firstRobot);
 		firstRobot.move("W", 3, 5);
 		System.out.println(firstRobot);
-		Robot r = new Robot("Sam", 1, 1, -5, "N");
 		
 	}
 }

@@ -1,3 +1,5 @@
+package Robot;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -14,6 +16,17 @@ public class RobotTester {
 	public void testGetX() {
 		Robot r = new Robot("Kit9", 5, 10, 2, "N");
 		assertTrue(r.getX() == 5);
+	}
+	
+	@Test
+	public void testInvalidSpeed(){
+		try{
+			Robot r = new Robot("Sam", 1, 1, -5, "N");
+			fail("Exception was not thrown for invalid speed value");
+		}
+		catch(IllegalArgumentException e){
+			assertTrue(true);
+		}
 	}
 	
 	@Test
